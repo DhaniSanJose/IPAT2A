@@ -7,3 +7,8 @@ def home(request):
     #do something
 
     return render(request, 'home.html')
+
+
+def register(request):
+    
+    return render(request, 'register.html')

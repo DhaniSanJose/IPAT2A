@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Record
-
+from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm, AddRecordForm
+from .decorators import *
 # Create your views here.
 
 
@@ -25,7 +26,7 @@ def home(request):
 
     return render(request, 'home.html', {'records':records})
 
-
+@admin_only
 def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -95,3 +96,10 @@ def add_record(request):
 
 
 
+def user_page(request):
+    pass
+
+
+def login_page(request):
+
+    return render(request,'login.html')
